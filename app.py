@@ -2,7 +2,7 @@ from yt_dlp import YoutubeDL
 
 def main():
     audio_downloader = YoutubeDL({'format':'bestaudio'})
-    video_downloader = YoutubeDL({'format':'bestvideo'})
+    video_downloader = YoutubeDL({'format':'mp4'})
 
     while True:
         try:
