@@ -1,27 +1,32 @@
-from yt_dlp import YoutubeDL
+from download import download_audio, download_video
 
 def main():
-    audio_downloader = YoutubeDL({'format':'bestaudio'})
-    video_downloader = YoutubeDL({'format':'mp4'})
+  while True:
+    try:
+      # Prompt the user to enter a YouTube video link
+      url = input('Enter link: ')
+  
+      # Prompt the user to choose the file format
+      print("Choose format: ")
+      print("1. Video")
+      print("2. Audio-only")
+      choice = int(input("Enter your choice: "))
+  
+      if choice == 1:
+        download_video(url)
+      elif choice == 2:
+        download_audio(url)
+      else:
+        print('Try again')
+  
+    except:
+      print('There seems to be some error')
+  
+    finally:
+      option = int(input('\n1.download again \n2.Exit\n\nOption here :'))
+      if option!=1:
+          break
 
-    while True:
-        try:
-            URL = input('Enter youtube url :  ')
-            format = int(input("Select format: \n1. Video\n2. Audio-only\nEnter: "))
-            if format == 1:
-                video_downloader.extract_info(URL)
-            elif format == 2:
-                audio_downloader.extract_info(URL)
-            else:
-                print("Invalid Input. Try Again")
-
-        except Exception:
-            print("Couldn\'t download")
-
-        finally:
-            option = int(input('\n1.download again \n2.Exit\n\nOption here :'))
-            if option!=1:
-                break
 
 if __name__ == '__main__':
     main()
